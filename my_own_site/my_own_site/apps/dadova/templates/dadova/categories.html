@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+{% for category in categories %}
+
+	<strong><a href="{% url 'dadova:show_category_products' category.slug %}">{{category.name}}</a></strong><br>
+
+{% endfor %}
+
+{% endblock %}

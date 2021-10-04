@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+
+{% block content %}
+
+<strong>{{ product.title }}</strong><br>
+<em>{{ product.price }}</em><br>
+<p>{{ product.description }}</p><br>
+
+<a href="{% url 'dadova:reviews' product.id %}"><strong>Посмотреть отзывы</strong></a>
+
+<hr>
+
+<form action="{% url 'dadova:add_to_cart' product.id %}" method="POST">
+	
+	{% csrf_token %}
+
+	<button type="submit">Добавить в корзину</button>
+
+</form><br>
+
+<form action="{% url 'dadova:leave_review' product.id %}" method="POST">
+	
+	{% csrf_token %}
+
+	<textarea name="text" required="" placeholder="Текст отзыва" cols="30" rows="10">
+		
+	</textarea><br>
+
+	<button type="submit">Оставить отзыв</button>
+
+</form>
+
+{% endblock %}
